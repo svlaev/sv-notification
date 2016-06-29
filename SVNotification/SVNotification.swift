@@ -108,6 +108,7 @@ class SVNotification: UIButton {
             }
             return
         }
+        stopHideTimerIfRunning()
         if animated {
             UIView.animateWithDuration(0.3, animations: {
                 self.frame = self.frameForHiding()
@@ -122,6 +123,10 @@ class SVNotification: UIButton {
             self.removeFromSuperview()
             callback?()
         }
+    }
+
+    func hideAnimated() {
+        hide(true)
     }
 
     func viewTapped() {
@@ -227,6 +232,9 @@ class SVNotification: UIButton {
         populateData()
         notification.parentVC = realParent
         realParent.view.addSubview(notification)
+        if duration > SVNotification.Permanent {
+            notification.startHideCountdownFor(duration)
+        }
         return notification
     }
 
@@ -257,8 +265,7 @@ class SVNotification: UIButton {
 
     private func startHideCountdownFor(duration: Double) {
         stopHideTimerIfRunning()
-
-        SVNotification.hideTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(hide), userInfo: nil, repeats: false)
+        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(hideAnimated), userInfo: nil, repeats: false)
     }
 
     private func stopHideTimerIfRunning() {
