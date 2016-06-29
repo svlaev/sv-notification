@@ -11,21 +11,19 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func actionShowDefaultNotification(sender: AnyObject) {
-        SVNotification.show("Default", parent: self, type: .Default) { notification in
+        SVNotification.showPermanentNavBarNotification("Default", subtitle: nil, parent: self) { notification in
             notification.hide()
         }
     }
 
     @IBAction func actionShowDefaultNotificationWithSubtitle(sender: AnyObject) {
-        SVNotification.show("Default title", subTitle: "Default subtitle", parent: self, type: .Default) { notification in
+        SVNotification.showPermanentNavBarNotification("Default title", subtitle: "Default subtitle", parent: self) { notification in
             notification.hide()
         }
     }
 
     @IBAction func actionShowTinyNotification(sender: AnyObject) {
-        SVNotification.show("Tiny", parent: self, type: .Tiny) { notification in
-            notification.hide()
-        }
+        SVNotification.showTinyNotification("Tiny nitification", parent: self)
     }
 
     override func viewDidLoad() {
