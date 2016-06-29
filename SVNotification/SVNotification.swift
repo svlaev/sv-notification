@@ -62,7 +62,7 @@ class SVNotification: UIButton {
 
     //// MARK: - Private static properties
     private static var notification: SVNotification! = nil
-    private static let defaultBgrColor = UIColor.orangeColor()
+    private static let defaultBgrColor = UIColor(red: 4.0/255.0, green: 146.0/255.0, blue: 1.0, alpha: 1.0)
     private static let defaultTextColor = UIColor.whiteColor()
     private static let defaultTextSize: CGFloat = 13.0
     private static var hideTimer: NSTimer! = nil
