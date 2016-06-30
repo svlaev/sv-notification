@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func actionShowDefaultNotification(sender: AnyObject) {
-        SVNotification.showPermanentNavBarNotification("Default", subtitle: nil, parent: self) { notification in
+        SVNotification.showNavBarSuccess("default", subtitle: nil, duration: SVNotification.Permanent, parent: self) { notification in
             notification.hide()
         }
     }

@@ -49,43 +49,126 @@ class SVNotification: UIButton {
         case NetworkReachableStatus
     }
 
+    // MARK: - Static classes
+    class Settings {
+        var bgrColor: UIColor = UIColor.withDecimal(90, g: 192, b: 222)
+        var textColor: UIColor = UIColor.whiteColor()
+        var textSize: CGFloat = 13.0
+    }
+
+    class SuccessSettings: Settings {
+        override init() {
+            super.init()
+            bgrColor = UIColor.withDecimal(92, g: 184, b: 92)
+        }
+    }
+
+    class WarningSettings: Settings {
+        override init() {
+            super.init()
+            bgrColor = UIColor.withDecimal(240, g: 173, b: 78)
+        }
+    }
+
+    class ErrorSettings: Settings {
+        override init() {
+            super.init()
+            bgrColor = UIColor.withDecimal(213, g: 83, b: 79)
+        }
+    }
+
     // MARK: - Public properties
     var tapClosure: (SVNotification -> Void)? = nil
 
     // MARK: - Private properties
-    private var notificationType: LayoutType = .Default
+    private var layout: LayoutType = .Default
+    private var type: NotificationType = NotificationType.Default
     private var titleString: String! = nil
     private var subtitleString: String! = nil
     private var lblTitle: UILabel! = nil
     private var lblSubtitle: UILabel! = nil
     private var parentVC: UIViewController! = nil
+    private var currentSettings: Settings! = nil
 
     //// MARK: - Private static properties
     private static var notification: SVNotification! = nil
-    private static let defaultBgrColor = UIColor(red: 4.0/255.0, green: 146.0/255.0, blue: 1.0, alpha: 1.0)
-    private static let defaultTextColor = UIColor.whiteColor()
-    private static let defaultTextSize: CGFloat = 13.0
     private static var hideTimer: NSTimer! = nil
 
     // MARK: - Static properties
     static var Permanent: Double = 0.0
-    static var bgrColor: UIColor! = SVNotification.defaultBgrColor
-    static var textColor: UIColor! = SVNotification.defaultTextColor
-    static var textSize: CGFloat = SVNotification.defaultTextSize
 
     // MARK: - Public Static methods
     class func showPermanentNavBarNotification(title: String, subtitle: String?, parent: UIViewController, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", parent: parent, type: .Default, tapClosure: tapClosure)
+        return showNotification(title, subTitle: subtitle ?? "", parent: parent, layout: .Default, type: .Default, tapClosure: tapClosure)
     }
 
     class func showTempNavBarNotification(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, type: .Default, tapClosure: tapClosure)
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows info notification above the Navigation Bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle
+     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when the view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showNavBarInfo(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows success notification above the Navigation Bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle
+     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when the view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showNavBarSuccess(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows warning notification above the Navigation Bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle
+     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when the view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showNavBarWarning(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Warning, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows error notification above the Navigation Bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle
+     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when the view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showNavBarError(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error, tapClosure: tapClosure)
     }
 
     class func showTinyNotification(t: String, parent: UIViewController) -> SVNotification {
-        return showNotification(t, subTitle: "", parent: parent, type: .Tiny, tapClosure: nil)
+        return showNotification(t, subTitle: "", parent: parent, layout: .Tiny, type: .Default, tapClosure: nil)
     }
-    
 
     // MARK: - Public methods
     func show() {
@@ -134,41 +217,40 @@ class SVNotification: UIButton {
     }
 
     // MARK: - Private static methods
-    private class func setupView(type: LayoutType, parent: UIViewController) {
+    private class func setupView(layout: LayoutType, type: NotificationType, parent: UIViewController, settings: Settings) {
         guard notification == nil else {
-            notification.notificationType = type
+            notification.currentSettings = settings
+            notification.applyCurrentVisualSettings()
+            notification.layout = layout
             var f = notification.frame
             f.origin.y = parent.topLayoutGuide.length - f.size.height
-            f.size.height = heightForType(type)
+            f.size.height = heightForType(layout)
             notification.frame = f
             adjustSubviews()
             return
         }
 
-        let topMargin = (type == .Default ? 0 : parent.topLayoutGuide.length) - heightForType(type)
+        let topMargin = (layout == .Default ? 0 : parent.topLayoutGuide.length) - heightForType(layout)
         notification = SVNotification(type: .Custom)
-        notification.notificationType = type
+        notification.currentSettings = settings
+        notification.layout = layout
         notification.setTitle("", forState: .Normal)
-        notification.frame = CGRectMake(0, topMargin, UIScreen.mainScreen().bounds.width , heightForType(type))
-        notification.backgroundColor = defaultBgrColor
+        notification.frame = CGRectMake(0, topMargin, UIScreen.mainScreen().bounds.width , heightForType(layout))
         setupShadow()
 
-        let isTiny = type == .Tiny
-        let lblTopMargin = type == .Tiny ? 0.0 : statusBarHeight()
+        let isTiny = layout == .Tiny
+        let lblTopMargin = layout == .Tiny ? 0.0 : statusBarHeight()
         let centerYCoord = (notification.frame.size.height - lblTopMargin) / (isTiny ? 1.0 : 2.0)
         notification.lblTitle = UILabel(frame: CGRectMake(0, lblTopMargin, notification.frame.size.width, centerYCoord))
-        notification.lblTitle.textColor = textColor
         notification.lblTitle.textAlignment = .Center
-        notification.lblTitle.font = notification.lblTitle.font.fontWithSize(textSize)
         notification.addSubview(notification.lblTitle)
 
         let lblTitleBottomBorder = notification.lblTitle.frame.origin.y + notification.lblTitle.frame.size.height
         notification.lblSubtitle = UILabel(frame: CGRectMake(0, lblTitleBottomBorder, notification.frame.size.width, notification.frame.size.height - lblTitleBottomBorder))
-        notification.lblSubtitle.textColor = textColor
         notification.lblSubtitle.textAlignment = .Center
-        notification.lblSubtitle.font = notification.lblSubtitle.font.fontWithSize(notification.lblTitle.font.pointSize - 1.0)
         notification.addSubview(notification.lblSubtitle)
 
+        notification.applyCurrentVisualSettings()
         populateData()
 
         notification.addTarget(notification, action: #selector(viewTapped), forControlEvents: .TouchUpInside)
@@ -188,7 +270,7 @@ class SVNotification: UIButton {
     }
 
     private class func adjustSubviews() {
-        let isTiny = notification.notificationType == .Tiny
+        let isTiny = notification.layout == .Tiny
         let lblTopMargin = isTiny ? 0.0 : statusBarHeight()
         let hasSubtitle = (notification.subtitleString?.characters.count ?? 0) > 0
         var f = notification.lblTitle.frame
@@ -217,13 +299,13 @@ class SVNotification: UIButton {
     }
 
     // MARK: - Private static initialization methods
-    private class func initWithTitle(title: String, subtitle: String, duration: Double, parent: UIViewController, andLayout layout: LayoutType, closure: (SVNotification->Void)?) -> SVNotification {
+    private class func initWithTitle(title: String, subtitle: String, duration: Double, parent: UIViewController, layout: LayoutType, type: NotificationType, settings: Settings, closure: (SVNotification->Void)?) -> SVNotification {
         // If we want to display nav bar notification, but we have specified a VC as parent, we must find the NavigationVC
         let realParent = layout == .Default && !(parent is UINavigationController) && parent.navigationController != nil ? parent.navigationController! : parent
         if notification?.superview != nil && notification.superview! != parent {
             notification.removeFromSuperview()
         }
-        setupView(layout, parent: realParent)
+        setupView(layout, type: type, parent: realParent, settings: settings)
         notification.tapClosure = closure
         notification.titleString = title
         notification.subtitleString = subtitle
@@ -238,14 +320,31 @@ class SVNotification: UIButton {
         return notification
     }
 
-    private class func showNotification(title: String, subTitle: String, parent: UIViewController, type: LayoutType, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: SVNotification.Permanent, parent: parent, andLayout: type, closure: tapClosure)
+    /**
+     Shows permanent notification
+     */
+    private class func showNotification(title: String, subTitle: String, parent: UIViewController, layout: LayoutType, type: NotificationType, tapClosure: (SVNotification->Void)?) -> SVNotification {
+        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: SVNotification.Permanent, parent: parent, layout: layout, type: type, settings: Settings(), closure: tapClosure)
         notification.show()
         return notification
     }
 
-    private class func showNotification(title: String, subTitle: String, duration: Double, parent: UIViewController, type: LayoutType, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: duration, parent: parent, andLayout: type, closure: tapClosure)
+    /**
+     Shows notification with duration
+     */
+    private class func showNotification(title: String, subTitle: String, duration: Double, parent: UIViewController, layout: LayoutType, type: NotificationType, tapClosure: (SVNotification->Void)?) -> SVNotification {
+        var settings: Settings! = nil
+        switch type {
+            case .Success:
+                settings = SuccessSettings()
+            case .Warning:
+                settings = WarningSettings()
+            case .Error:
+                settings = ErrorSettings()
+            default:
+                settings = Settings()
+        }
+        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: duration, parent: parent, layout: layout, type: type, settings: settings, closure: tapClosure)
         notification.show()
         return notification
     }
@@ -253,13 +352,13 @@ class SVNotification: UIButton {
     // MARK: - Private methods
     private func frameForHiding() -> CGRect {
         var f = self.frame
-        f.origin.y = (notificationType == .Default ? 0 : parentVC.topLayoutGuide.length) - f.size.height
+        f.origin.y = (layout == .Default ? 0 : parentVC.topLayoutGuide.length) - f.size.height
         return f
     }
 
     private func frameForShowing() -> CGRect {
         var f = self.frame
-        f.origin.y = notificationType == .Default ? 0 : parentVC.topLayoutGuide.length
+        f.origin.y = layout == .Default ? 0 : parentVC.topLayoutGuide.length
         return f
     }
 
@@ -274,20 +373,28 @@ class SVNotification: UIButton {
             SVNotification.hideTimer = nil
         }
     }
+
+    private func applyCurrentVisualSettings() {
+        backgroundColor = currentSettings.bgrColor
+        lblTitle.textColor = currentSettings.textColor
+        lblSubtitle.textColor = currentSettings.textColor
+        lblTitle.font = lblTitle.font.fontWithSize(currentSettings.textSize)
+        lblSubtitle.font = lblSubtitle.font.fontWithSize(lblTitle.font.pointSize - 1.0)
+    }
 }
 
 extension UIColor {
     /**
      Make UIColor from decimal values
 
-     - parameter r:     red component. Values: [0.0, 255.0]
-     - parameter g:     green component. Values: [0.0, 255.0]
-     - parameter b:     blue component. Values: [0.0, 255.0]
+     - parameter r:     red component. Values: [0, 255]
+     - parameter g:     green component. Values: [0, 255]
+     - parameter b:     blue component. Values: [0, 255]
      - parameter alpha: alpha component. Values: [0.0, 1.0]
 
      - returns: UIColor object from the specified values
      */
-    static func withDecimal(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
-        return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: alpha)
+    static func withDecimal(r: Int, g: Int, b: Int, alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: alpha)
     }
 }
