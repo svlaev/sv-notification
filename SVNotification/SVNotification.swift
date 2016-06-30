@@ -275,3 +275,19 @@ class SVNotification: UIButton {
         }
     }
 }
+
+extension UIColor {
+    /**
+     Make UIColor from decimal values
+
+     - parameter r:     red component. Values: [0.0, 255.0]
+     - parameter g:     green component. Values: [0.0, 255.0]
+     - parameter b:     blue component. Values: [0.0, 255.0]
+     - parameter alpha: alpha component. Values: [0.0, 1.0]
+
+     - returns: UIColor object from the specified values
+     */
+    static func withDecimal(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: alpha)
+    }
+}
