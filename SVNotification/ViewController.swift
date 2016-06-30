@@ -50,25 +50,5 @@ class ViewController: UIViewController {
         default: break
         }
     }
-
-    @IBAction func actionShowDefaultNotification(sender: AnyObject) {
-        SVNotification.showNavBarSuccess("default", subtitle: nil, duration: SVNotification.Permanent, parent: self) { notification in
-            notification.hide()
-        }
-    }
-
-    @IBAction func actionShowDefaultNotificationWithSubtitle(sender: AnyObject) {
-        SVNotification.showPermanentNavBarNotification("Default title", subtitle: "Default subtitle", parent: self) { notification in
-            notification.hide()
-        }
-    }
-
-    @IBAction func actionShowMessageWithDuration(sender: AnyObject) {
-        SVNotification.showTempNavBarNotification("I'm gone after 3 seconds", subtitle: nil, duration: 3.0, parent: self, tapClosure: nil)
-    }
-
-    @IBAction func actionShowTinyNotification(sender: AnyObject) {
-        SVNotification.showTinyNotification("Tiny nitification", parent: self)
-    }
 }
 
