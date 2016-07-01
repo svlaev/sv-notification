@@ -52,8 +52,14 @@ class SVNotification: UIButton {
     // MARK: - Static classes
     class Settings {
         var bgrColor: UIColor = UIColor.withDecimal(90, g: 192, b: 222)
-        var textColor: UIColor = UIColor.whiteColor()
-        var textSize: CGFloat = 13.0
+        var textColorTitle: UIColor = UIColor.whiteColor()
+        var textColorSubtitle: UIColor = UIColor.whiteColor()
+        var textSizeTitle: CGFloat = 14.0
+        var textSizeSubtitle: CGFloat = 13.0
+        var fontTitle: UIFont = UIFont(name: "Avenir-Bold", size: 14.0) ?? UIFont.boldSystemFontOfSize(14.0)
+        var fontSubtitle: UIFont = UIFont(name: "Avenir-Bold", size: 13.0) ?? UIFont.boldSystemFontOfSize(13.0)
+        var textAlignmentTitle: NSTextAlignment = .Center
+        var textAlignmentSubtitle: NSTextAlignment = .Center
     }
 
     class SuccessSettings: Settings {
@@ -249,12 +255,13 @@ class SVNotification: UIButton {
         let lblTopMargin = layout == .Tiny ? 0.0 : statusBarHeight()
         let centerYCoord = (notification.frame.size.height - lblTopMargin) / (isTiny ? 1.0 : 2.0)
         notification.lblTitle = UILabel(frame: CGRectMake(0, lblTopMargin, notification.frame.size.width, centerYCoord))
-        notification.lblTitle.textAlignment = .Center
+        notification.lblTitle.textAlignment = notification.currentSettings.textAlignmentTitle
+        notification.lblTitle.numberOfLines = 0
         notification.addSubview(notification.lblTitle)
 
         let lblTitleBottomBorder = notification.lblTitle.frame.origin.y + notification.lblTitle.frame.size.height
         notification.lblSubtitle = UILabel(frame: CGRectMake(0, lblTitleBottomBorder, notification.frame.size.width, notification.frame.size.height - lblTitleBottomBorder))
-        notification.lblSubtitle.textAlignment = .Center
+        notification.lblSubtitle.textAlignment = notification.currentSettings.textAlignmentSubtitle
         notification.addSubview(notification.lblSubtitle)
 
         notification.applyCurrentVisualSettings()
@@ -363,10 +370,10 @@ class SVNotification: UIButton {
 
     private func applyCurrentVisualSettings() {
         backgroundColor = currentSettings.bgrColor
-        lblTitle.textColor = currentSettings.textColor
-        lblSubtitle.textColor = currentSettings.textColor
-        lblTitle.font = lblTitle.font.fontWithSize(currentSettings.textSize)
-        lblSubtitle.font = lblSubtitle.font.fontWithSize(lblTitle.font.pointSize - 1.0)
+        lblTitle.textColor = currentSettings.textColorTitle
+        lblSubtitle.textColor = currentSettings.textColorSubtitle
+        lblTitle.font = currentSettings.fontTitle.fontWithSize(currentSettings.textSizeTitle)
+        lblSubtitle.font = currentSettings.fontSubtitle.fontWithSize(currentSettings.textSizeSubtitle)
     }
 
     private func setupConstraints() {
@@ -406,7 +413,6 @@ class SVNotification: UIButton {
         let lblTopMargin = isTiny ? 0.0 : SVNotification.statusBarHeight()
         let hasSubtitle = (subtitleString?.characters.count ?? 0) > 0
         let subTitleHeight = isTiny ? 0 : (hasSubtitle ? (constrNotificationHeight.constant - lblTopMargin) / 2.0 : 0)
-        print("Height:", constrNotificationHeight.constant , "SubtitleHeight", subTitleHeight, "TopMargin", lblTopMargin)
         if constrLblSubtitleHeight == nil {
             let dict = ["lbl" : lblSubtitle]
             lblSubtitle.translatesAutoresizingMaskIntoConstraints = false
