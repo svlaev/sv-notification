@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnNavBarSuccess: UIButton!
     @IBOutlet weak var btnNavBarWarning: UIButton!
     @IBOutlet weak var btnNavBarError: UIButton!
+    @IBOutlet weak var btnNavBarCustom: UIButton!
     @IBOutlet weak var btmTinyNotification: UIButton!
 
     // MARK: - Actions
@@ -24,29 +25,63 @@ class ViewController: UIViewController {
     @IBAction func actionShowNotification(sender: UIButton) {
         switch sender {
             case btnNavBarDefault:
-                SVNotification.showNavBarInfo("Default Title", subtitle: nil, duration: SVNotification.Permanent, parent: self) { notification in
+                SVNotification.showNavBarInfo("Default Title",
+                  subtitle: nil,
+                  duration: SVNotification.Permanent,
+                  parent: self,
+                  settings: nil) { notification in
                     notification.hide()
                 }
             case btnNavBarSubtitle:
-                SVNotification.showNavBarInfo("Default Title", subtitle: "Subtitle", duration: SVNotification.Permanent, parent: self) { notification in
+                SVNotification.showNavBarInfo("Default Title",
+                  subtitle: "Subtitle",
+                  duration: SVNotification.Permanent,
+                  parent: self,
+                  settings: nil) { notification in
                     notification.hide()
                 }
             case btnNavBarDuration:
-                SVNotification.showNavBarInfo("I will be gone after 3 seconds", subtitle: nil, duration: 3.0, parent: self)
+                SVNotification.showNavBarInfo("I will be gone after 3 seconds",
+                  subtitle: nil,
+                  duration: 3.0,
+                  parent: self,
+                  settings: nil)
             case btnNavBarSuccess:
-                SVNotification.showNavBarSuccess("Horraaayy!!", subtitle: "We did it!", duration: SVNotification.Permanent, parent: self) { n in
+                SVNotification.showNavBarSuccess("Horraaayy!!",
+                 subtitle: "We did it!",
+                 duration: SVNotification.Permanent,
+                 parent: self,
+                 settings: nil) { n in
                     n.hide()
                 }
             case btnNavBarWarning:
-                SVNotification.showNavBarWarning("Careful, mate!", subtitle: "This is just a warning", duration: SVNotification.Permanent, parent: self) { n in
+                SVNotification.showNavBarWarning("Careful, mate!",
+                 subtitle: "This is just a warning",
+                 duration: SVNotification.Permanent,
+                 parent: self,
+                 settings: nil) { n in
                     n.hide()
                 }
             case btnNavBarError:
-                SVNotification.showNavBarError("Ooooops!", subtitle: "S*it happened :(", duration: SVNotification.Permanent, parent: self) { n in
+                SVNotification.showNavBarError("Ooooops!",
+                   subtitle: "S*it happened :(",
+                   duration: SVNotification.Permanent,
+                   parent: self,
+                   settings: nil) { n in
                     n.hide()
                 }
-        case btmTinyNotification:
-            SVNotification.showTinyNotification("I'm slim :)", parent: self)
+            case btnNavBarCustom:
+                let settings = SVNotification.Settings()
+                settings.bgrColor = UIColor.purpleColor()
+                settings.fontTitle = UIFont(name: "Arial", size: 16.0)!
+                settings.fontSubtitle = UIFont(name: "AmericanTypewriter-Bold", size: 14.0)!
+                SVNotification.showNavBarInfo("Custom",
+                                              subtitle: "Custom Subtitle",
+                                              duration: SVNotification.Permanent,
+                                              parent: self,
+                                              settings: settings)
+            case btmTinyNotification:
+                SVNotification.showTinyNotification(title: "I'm slim :)", parent: self)
         default: break
         }
     }

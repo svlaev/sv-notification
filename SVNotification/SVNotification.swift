@@ -110,14 +110,6 @@ class SVNotification: UIButton {
     static var Permanent: Double = 0.0
 
     // MARK: - Public Static methods
-    class func showPermanentNavBarNotification(title: String, subtitle: String?, parent: UIViewController, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", parent: parent, layout: .Default, type: .Default, tapClosure: tapClosure)
-    }
-
-    class func showTempNavBarNotification(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, tapClosure: tapClosure)
-    }
-
     /**
      Shows info notification above the Navigation Bar
 
@@ -125,12 +117,13 @@ class SVNotification: UIButton {
      - parameter subtitle:   subtitle
      - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
      - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter settings:   visual settings. Leave nil for default ones
      - parameter tapClosure: closure, executed when the view is tapped
 
      - returns: the notification which has been shown
      */
-    class func showNavBarInfo(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, tapClosure: tapClosure)
+    class func showNavBarInfo(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, settings: settings, tapClosure: tapClosure)
     }
 
     /**
@@ -140,12 +133,13 @@ class SVNotification: UIButton {
      - parameter subtitle:   subtitle
      - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
      - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter settings:   visual settings. Leave nil for default ones
      - parameter tapClosure: closure, executed when the view is tapped
 
      - returns: the notification which has been shown
      */
-    class func showNavBarSuccess(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, tapClosure: tapClosure)
+    class func showNavBarSuccess(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, settings: settings, tapClosure: tapClosure)
     }
 
     /**
@@ -155,12 +149,13 @@ class SVNotification: UIButton {
      - parameter subtitle:   subtitle
      - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
      - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter settings:   visual settings. Leave nil for default ones
      - parameter tapClosure: closure, executed when the view is tapped
 
      - returns: the notification which has been shown
      */
-    class func showNavBarWarning(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Warning, tapClosure: tapClosure)
+    class func showNavBarWarning(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Warning, settings: settings, tapClosure: tapClosure)
     }
 
     /**
@@ -170,16 +165,26 @@ class SVNotification: UIButton {
      - parameter subtitle:   subtitle
      - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
      - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter settings:   visual settings. Leave nil for default ones
      - parameter tapClosure: closure, executed when the view is tapped
 
      - returns: the notification which has been shown
      */
-    class func showNavBarError(title: String, subtitle: String?, duration: Double, parent: UIViewController, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error, tapClosure: tapClosure)
+    class func showNavBarError(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error, settings: settings, tapClosure: tapClosure)
     }
 
-    class func showTinyNotification(t: String, parent: UIViewController) -> SVNotification {
-        return showNotification(t, subTitle: "", parent: parent, layout: .Tiny, type: .Default, tapClosure: nil)
+    /**
+     Shows tiny nitification below the nav bar
+
+     - parameter title:    title
+     - parameter parent:   parent view controller
+     - parameter settings: visual settings. Leave nil for default ones
+
+     - returns: the notification which has been shown
+     */
+    class func showTinyNotification(title t: String, parent: UIViewController, settings: Settings? = nil) -> SVNotification {
+        return showNotification(t, subTitle: "", parent: parent, layout: .Tiny, type: .Default, settings: settings, tapClosure: nil)
     }
 
     // MARK: - Public methods
@@ -321,28 +326,28 @@ class SVNotification: UIButton {
     /**
      Shows permanent notification
      */
-    private class func showNotification(title: String, subTitle: String, parent: UIViewController, layout: LayoutType, type: NotificationType, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: SVNotification.Permanent, parent: parent, layout: layout, type: type, settings: Settings(), closure: tapClosure)
-        notification.show()
-        return notification
+    private class func showNotification(title: String, subTitle: String, parent: UIViewController, layout: LayoutType, type: NotificationType, settings: Settings?, tapClosure: (SVNotification->Void)?) -> SVNotification {
+        return showNotification(title, subTitle: subTitle, duration: SVNotification.Permanent, parent: parent, layout: layout, type: type, settings: settings, tapClosure: tapClosure)
     }
 
     /**
      Shows notification with duration
      */
-    private class func showNotification(title: String, subTitle: String, duration: Double, parent: UIViewController, layout: LayoutType, type: NotificationType, tapClosure: (SVNotification->Void)?) -> SVNotification {
-        var settings: Settings! = nil
-        switch type {
-            case .Success:
-                settings = SuccessSettings()
-            case .Warning:
-                settings = WarningSettings()
-            case .Error:
-                settings = ErrorSettings()
-            default:
-                settings = Settings()
+    private class func showNotification(title: String, subTitle: String, duration: Double, parent: UIViewController, layout: LayoutType, type: NotificationType, settings: Settings?, tapClosure: (SVNotification->Void)?) -> SVNotification {
+        var s: Settings! = settings
+        if s == nil {
+            switch type {
+                case .Success:
+                    s = SuccessSettings()
+                case .Warning:
+                    s = WarningSettings()
+                case .Error:
+                    s = ErrorSettings()
+                default:
+                    s = Settings()
+            }
         }
-        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: duration, parent: parent, layout: layout, type: type, settings: settings, closure: tapClosure)
+        notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: duration, parent: parent, layout: layout, type: type, settings: s, closure: tapClosure)
         notification.show()
         return notification
     }
