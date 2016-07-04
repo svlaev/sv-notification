@@ -1,2 +1,2 @@
 # sv-notification
-UIAlertView replacement built with Swift
+iOS App notification lib built with Swift
