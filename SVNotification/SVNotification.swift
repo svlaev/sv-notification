@@ -111,80 +111,34 @@ class SVNotification: UIButton {
 
     // MARK: - Public Static methods
     /**
-     Shows info notification above the Navigation Bar
+     Shows notification above the Navigation bar
 
      - parameter title:      title
      - parameter subtitle:   subtitle
-     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
+     - parameter duration:   time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
+     - parameter type:       the type of notification
      - parameter parent:     parent view controller (may be UINavigationController)
-     - parameter settings:   visual settings. Leave nil for default ones
-     - parameter tapClosure: closure, executed when the view is tapped
+     - parameter settings:   visual settings. Leav nil to use default ones associated with `type`
+     - parameter tapClosure: closure, executed when view is tapped
 
      - returns: the notification which has been shown
      */
-    class func showNavBarInfo(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, settings: settings, tapClosure: tapClosure)
+    class func showAboveNavBar(title: String, subtitle: String?, duration: Double, type: NotificationType, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: type, settings: settings, tapClosure: tapClosure)
     }
 
     /**
-     Shows success notification above the Navigation Bar
+     Shows tiny notification below the nav bar for limited time
 
-     - parameter title:      title
-     - parameter subtitle:   subtitle
-     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
-     - parameter parent:     parent view controller (may be UINavigationController)
-     - parameter settings:   visual settings. Leave nil for default ones
-     - parameter tapClosure: closure, executed when the view is tapped
-
-     - returns: the notification which has been shown
-     */
-    class func showNavBarSuccess(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, settings: settings, tapClosure: tapClosure)
-    }
-
-    /**
-     Shows warning notification above the Navigation Bar
-
-     - parameter title:      title
-     - parameter subtitle:   subtitle
-     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
-     - parameter parent:     parent view controller (may be UINavigationController)
-     - parameter settings:   visual settings. Leave nil for default ones
-     - parameter tapClosure: closure, executed when the view is tapped
-
-     - returns: the notification which has been shown
-     */
-    class func showNavBarWarning(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Warning, settings: settings, tapClosure: tapClosure)
-    }
-
-    /**
-     Shows error notification above the Navigation Bar
-
-     - parameter title:      title
-     - parameter subtitle:   subtitle
-     - parameter duration:   time(in seconds) before the notification will get hidden. Enter 0 if you want it to be permanent.
-     - parameter parent:     parent view controller (may be UINavigationController)
-     - parameter settings:   visual settings. Leave nil for default ones
-     - parameter tapClosure: closure, executed when the view is tapped
-
-     - returns: the notification which has been shown
-     */
-    class func showNavBarError(title: String, subtitle: String?, duration: Double, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification->Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error, settings: settings, tapClosure: tapClosure)
-    }
-
-    /**
-     Shows tiny nitification below the nav bar
-
-     - parameter title:    title
+     - parameter t:        title
+     - parameter duration: time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
      - parameter parent:   parent view controller
      - parameter settings: visual settings. Leave nil for default ones
 
      - returns: the notification which has been shown
      */
-    class func showTinyNotification(title t: String, parent: UIViewController, settings: Settings? = nil) -> SVNotification {
-        return showNotification(t, subTitle: "", parent: parent, layout: .Tiny, type: .Default, settings: settings, tapClosure: nil)
+    class func showTinyNotification(title t: String, duration: Double, parent: UIViewController, type: NotificationType = .Default, settings: Settings? = nil) -> SVNotification {
+        return showNotification(t, subTitle: "", duration: duration, parent: parent, layout: .Tiny, type: type, settings: settings, tapClosure: nil)
     }
 
     // MARK: - Public methods
@@ -338,9 +292,9 @@ class SVNotification: UIButton {
         var s: Settings! = settings
         if s == nil {
             switch type {
-                case .Success:
+                case .Success, .NetworkReachableStatus:
                     s = SuccessSettings()
-                case .Warning:
+                case .Warning, .NetworkUnreachableStatus:
                     s = WarningSettings()
                 case .Error:
                     s = ErrorSettings()

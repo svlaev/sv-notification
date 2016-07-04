@@ -138,12 +138,26 @@
                                             <action selector="actionShowNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Udb-4u-LnK"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZR-zA-XlB">
+                                        <rect key="frame" x="0.0" y="46" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="T1l-ad-xIV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Simulate reconnect"/>
+                                        <connections>
+                                            <action selector="actionShowNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EkD-an-YZl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="wgc-0c-nU1" secondAttribute="trailing" id="46l-Hf-fhm"/>
                                     <constraint firstItem="wgc-0c-nU1" firstAttribute="leading" secondItem="bSp-4T-hJM" secondAttribute="leading" id="A6z-tf-rnv"/>
                                     <constraint firstItem="wgc-0c-nU1" firstAttribute="top" secondItem="bSp-4T-hJM" secondAttribute="top" constant="8" id="K7U-72-smw"/>
+                                    <constraint firstAttribute="trailing" secondItem="eZR-zA-XlB" secondAttribute="trailing" id="Sah-oC-kxI"/>
+                                    <constraint firstItem="eZR-zA-XlB" firstAttribute="top" secondItem="wgc-0c-nU1" secondAttribute="bottom" constant="8" id="cDU-dG-yjg"/>
+                                    <constraint firstItem="eZR-zA-XlB" firstAttribute="leading" secondItem="bSp-4T-hJM" secondAttribute="leading" id="tvU-G6-IG5"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mV2-Xq-hX6" userLabel="TBD">
@@ -179,6 +193,7 @@
                         <outlet property="btnNavBarSubtitle" destination="IY9-QX-AmD" id="dlp-Qu-24j"/>
                         <outlet property="btnNavBarSuccess" destination="vq2-kL-qiO" id="2pn-vF-CQx"/>
                         <outlet property="btnNavBarWarning" destination="0Oh-dq-Zhq" id="84Y-9e-FKt"/>
+                        <outlet property="btnTinyNitificationReconnect" destination="eZR-zA-XlB" id="CUT-N8-uhK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
