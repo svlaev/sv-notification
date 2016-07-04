@@ -123,7 +123,7 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showAboveNavBar(title: String, subtitle: String?, duration: Double, type: NotificationType, parent: UIViewController, settings: Settings?, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+    class func showAboveNavBar(title: String, subtitle: String? = nil, duration: Double, type: NotificationType, parent: UIViewController, settings: Settings? = nil, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
         return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: type, settings: settings, tapClosure: tapClosure)
     }
 

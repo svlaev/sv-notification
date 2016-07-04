@@ -27,11 +27,9 @@ class ViewController: UIViewController {
         switch sender {
             case btnNavBarDefault:
                 SVNotification.showAboveNavBar("Default Title",
-                  subtitle: nil,
                   duration: SVNotification.Permanent,
                   type: .Default,
-                  parent: self,
-                  settings: nil) { notification in
+                  parent: self) { notification in
                     notification.hide()
                 }
             case btnNavBarSubtitle:
@@ -39,24 +37,20 @@ class ViewController: UIViewController {
                   subtitle: "Subtitle",
                   duration: SVNotification.Permanent,
                   type: .Default,
-                  parent: self,
-                  settings: nil) { notification in
+                  parent: self) { notification in
                     notification.hide()
                 }
             case btnNavBarDuration:
                 SVNotification.showAboveNavBar("I will be gone after 3 seconds",
-                  subtitle: nil,
                   duration: 3.0,
                   type: .Default,
-                  parent: self,
-                  settings: nil)
+                  parent: self)
             case btnNavBarSuccess:
                 SVNotification.showAboveNavBar("Horraaayy!!",
                  subtitle: "We did it!",
                  duration: SVNotification.Permanent,
                  type: .Success,
-                 parent: self,
-                 settings: nil) { n in
+                 parent: self) { n in
                     n.hide()
                 }
             case btnNavBarWarning:
@@ -64,8 +58,7 @@ class ViewController: UIViewController {
                  subtitle: "This is just a warning",
                  duration: SVNotification.Permanent,
                  type: .Warning,
-                 parent: self,
-                 settings: nil) { n in
+                 parent: self) { n in
                     n.hide()
                 }
             case btnNavBarError:
@@ -73,8 +66,7 @@ class ViewController: UIViewController {
                    subtitle: "S*it happened :(",
                    duration: SVNotification.Permanent,
                    type: .Error,
-                   parent: self,
-                   settings: nil) { n in
+                   parent: self) { n in
                     n.hide()
                 }
             case btnNavBarCustom:
