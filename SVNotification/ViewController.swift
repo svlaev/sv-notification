@@ -70,16 +70,16 @@ class ViewController: UIViewController {
                     n.hide()
                 }
             case btnNavBarCustom:
-                let settings = SVNotification.Settings()
-                settings.bgrColor = UIColor.purpleColor()
-                settings.fontTitle = UIFont(name: "Arial", size: 16.0)!
-                settings.fontSubtitle = UIFont(name: "AmericanTypewriter-Bold", size: 14.0)!
+                let style = SVNotification.Style()
+                style.bgrColor = UIColor.purpleColor()
+                style.fontTitle = UIFont(name: "Arial", size: 16.0)!
+                style.fontSubtitle = UIFont(name: "AmericanTypewriter-Bold", size: 14.0)!
                 SVNotification.showAboveNavBar("Custom",
                   subtitle: "Custom Subtitle",
                   duration: SVNotification.Permanent,
                   type: .Default,
                   parent: self,
-                  settings: settings
+                  style: style
                 )
             case btmTinyNotification:
                 SVNotification.showTinyNotification(title: "I'm slim :)",
