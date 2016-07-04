@@ -240,6 +240,7 @@ class SVNotification: UIButton {
     // MARK: - Private static methods
     private class func setupView(layout: LayoutType, type: NotificationType, parent: UIViewController, settings: Settings) {
         guard notification == nil else {
+            notification.stopHideTimerIfRunning()
             notification.currentSettings = settings
             notification.applyCurrentVisualSettings()
             notification.layout = layout
@@ -363,7 +364,7 @@ class SVNotification: UIButton {
 
     private func startHideCountdownFor(duration: Double) {
         stopHideTimerIfRunning()
-        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(hideAnimated), userInfo: nil, repeats: false)
+        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(SVNotification.hideAnimated), userInfo: nil, repeats: false)
     }
 
     private func stopHideTimerIfRunning() {
