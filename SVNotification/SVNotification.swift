@@ -38,15 +38,6 @@ class SVNotification: UIButton {
          Displays notification with yellow background
          */
         case Warning
-
-        /*
-         Displays tiny notification with yellow background
-         */
-        case NetworkUnreachableStatus
-        /*
-         Displays tiny notification with green background
-         */
-        case NetworkReachableStatus
     }
 
     // MARK: - Static classes
@@ -292,9 +283,9 @@ class SVNotification: UIButton {
         var s: Settings! = settings
         if s == nil {
             switch type {
-                case .Success, .NetworkReachableStatus:
+                case .Success:
                     s = SuccessSettings()
-                case .Warning, .NetworkUnreachableStatus:
+                case .Warning:
                     s = WarningSettings()
                 case .Error:
                     s = ErrorSettings()

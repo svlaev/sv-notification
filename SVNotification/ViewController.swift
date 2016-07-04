@@ -91,13 +91,13 @@ class ViewController: UIViewController {
                 SVNotification.showTinyNotification(title: "Reconnecting...",
                     duration: SVNotification.Permanent,
                     parent: self,
-                    type: .NetworkUnreachableStatus
+                    type: .Warning
                 )
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
                     SVNotification.showTinyNotification(title: "Connected!!",
                         duration: 1.0,
                         parent: self,
-                        type: .NetworkReachableStatus
+                        type: .Success
                     )
             }
 
