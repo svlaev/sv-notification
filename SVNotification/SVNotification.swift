@@ -481,14 +481,15 @@ class SVNotification: UIButton {
     }
 
     private func setupBlurView() {
-        if blurView != nil && blurView.superview != nil {
-            return
-        }
-        guard type == .Default && blurView == nil else {
-            blurView.removeFromSuperview()
+        guard type == .Default else {
+            blurView?.removeFromSuperview()
             return
         }
 
+        if blurView != nil && blurView.superview != nil  {
+            return
+        }
+        
         let effect = UIBlurEffect(style: .Light)
         blurView = UIVisualEffectView(effect: effect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
