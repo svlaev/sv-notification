@@ -102,10 +102,70 @@ class SVNotification: UIButton {
 
     // MARK: - Public Static methods
     /**
+     Shows default notification above the Navigation bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle (if any)
+     - parameter duration:   time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showDefaultAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, style: nil, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows success notification above the Navigation bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle (if any)
+     - parameter duration:   time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showSuccessAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, style: nil, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows warning notification above the Navigation bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle (if any)
+     - parameter duration:   time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showWarningAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Warning, style: nil, tapClosure: tapClosure)
+    }
+
+    /**
+     Shows error notification above the Navigation bar
+
+     - parameter title:      title
+     - parameter subtitle:   subtitle (if any)
+     - parameter duration:   time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
+     - parameter parent:     parent view controller (may be UINavigationController)
+     - parameter tapClosure: closure, executed when view is tapped
+
+     - returns: the notification which has been shown
+     */
+    class func showErrorAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error		, style: nil, tapClosure: tapClosure)
+    }
+
+    /**
      Shows notification above the Navigation bar
 
      - parameter title:      title
-     - parameter subtitle:   subtitle
+     - parameter subtitle:   subtitle (if any)
      - parameter duration:   time(in seconds) before the notification will dissappear. Enter `SVNotification.Permanent` for non-dissappearing notification
      - parameter type:       the type of notification
      - parameter parent:     parent view controller (may be UINavigationController)
@@ -114,8 +174,8 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showAboveNavBar(title: String, subtitle: String? = nil, duration: Double, type: NotificationType, parent: UIViewController, style: Style? = nil, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: type, style: style, tapClosure: tapClosure)
+    class func showCustomAboveNavBar(title: String, subtitle: String? = nil, duration: Double, type: NotificationType, parent: UIViewController, style: Style? = nil, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, style: style, tapClosure: tapClosure)
     }
 
     /**

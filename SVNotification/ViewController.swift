@@ -26,46 +26,40 @@ class ViewController: UIViewController {
     @IBAction func actionShowNotification(sender: UIButton) {
         switch sender {
             case btnNavBarDefault:
-                SVNotification.showAboveNavBar("Default Title",
+                SVNotification.showDefaultAboveNavBar("Default Title",
                   duration: SVNotification.Permanent,
-                  type: .Default,
                   parent: self) { notification in
                     notification.hide()
                 }
             case btnNavBarSubtitle:
-                SVNotification.showAboveNavBar("Default Title",
+                SVNotification.showDefaultAboveNavBar("Default Title",
                   subtitle: "Subtitle",
                   duration: SVNotification.Permanent,
-                  type: .Default,
                   parent: self) { notification in
                     notification.hide()
                 }
             case btnNavBarDuration:
-                SVNotification.showAboveNavBar("I will be gone after 3 seconds",
+                SVNotification.showDefaultAboveNavBar("I will be gone after 3 seconds",
                   duration: 3.0,
-                  type: .Default,
                   parent: self)
             case btnNavBarSuccess:
-                SVNotification.showAboveNavBar("Horraaayy!!",
+                SVNotification.showSuccessAboveNavBar("Horraaayy!!",
                  subtitle: "We did it!",
                  duration: SVNotification.Permanent,
-                 type: .Success,
                  parent: self) { n in
                     n.hide()
                 }
             case btnNavBarWarning:
-                SVNotification.showAboveNavBar("Careful, mate!",
+                SVNotification.showWarningAboveNavBar("Careful, mate!",
                  subtitle: "This is just a warning",
                  duration: SVNotification.Permanent,
-                 type: .Warning,
                  parent: self) { n in
                     n.hide()
                 }
             case btnNavBarError:
-                SVNotification.showAboveNavBar("Ooooops!",
+                SVNotification.showErrorAboveNavBar("Ooooops!",
                    subtitle: "S*it happened :(",
                    duration: SVNotification.Permanent,
-                   type: .Error,
                    parent: self) { n in
                     n.hide()
                 }
@@ -74,7 +68,7 @@ class ViewController: UIViewController {
                 style.bgrColor = UIColor.purpleColor()
                 style.fontTitle = UIFont(name: "Arial", size: 16.0)!
                 style.fontSubtitle = UIFont(name: "AmericanTypewriter-Bold", size: 14.0)!
-                SVNotification.showAboveNavBar("Custom",
+                SVNotification.showCustomAboveNavBar("Custom",
                   subtitle: "Custom Subtitle",
                   duration: SVNotification.Permanent,
                   type: .Default,
@@ -87,21 +81,21 @@ class ViewController: UIViewController {
                     parent: self
                 )
 
-        case btnTinyNitificationReconnect:
-                SVNotification.showTinyNotification(title: "Reconnecting...",
-                    duration: SVNotification.Permanent,
-                    parent: self,
-                    type: .Warning
-                )
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-                    SVNotification.showTinyNotification(title: "Connected!!",
-                        duration: 1.0,
+            case btnTinyNitificationReconnect:
+                    SVNotification.showTinyNotification(title: "Reconnecting...",
+                        duration: SVNotification.Permanent,
                         parent: self,
-                        type: .Success
+                        type: .Warning
                     )
-            }
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                        SVNotification.showTinyNotification(title: "Connected!!",
+                            duration: 1.0,
+                            parent: self,
+                            type: .Success
+                        )
+                }
 
-        default: break
+            default: break
         }
     }
 }
