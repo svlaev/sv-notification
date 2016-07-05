@@ -98,5 +98,11 @@ class ViewController: UIViewController {
             default: break
         }
     }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        title = "Very long title"
+    }
 }
 

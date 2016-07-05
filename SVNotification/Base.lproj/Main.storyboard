@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SVNotification" customModuleProvider="target" sceneMemberID="viewController">
@@ -183,7 +183,7 @@
                             <constraint firstItem="ESs-TP-2MD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="yIH-r8-ih3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wUJ-jf-1U2"/>
+                    <navigationItem key="navigationItem" title="Title" id="agu-mA-iCy"/>
                     <connections>
                         <outlet property="btmTinyNotification" destination="wgc-0c-nU1" id="jke-F8-qJ7"/>
                         <outlet property="btnNavBarCustom" destination="KQq-QV-Jow" id="7xF-o9-Qf9"/>
@@ -207,6 +207,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8hF-95-5r3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.2470588235" green="0.69803921570000005" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0071725570325455301" green="0.0" blue="0.93308080808080807" alpha="0.18654983108108109" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MMc-d7-LCL"/>

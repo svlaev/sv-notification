@@ -80,6 +80,7 @@ class SVNotification: UIButton {
     // MARK: - Private properties
     private var layout: LayoutType = .Default
     private var type: NotificationType = NotificationType.Default
+    private var blurView: UIVisualEffectView! = nil
     private var titleString: String! = nil
     private var subtitleString: String! = nil
     private var lblTitle: UILabel! = nil
@@ -158,7 +159,7 @@ class SVNotification: UIButton {
      - returns: the notification which has been shown
      */
     class func showErrorAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error		, style: nil, tapClosure: tapClosure)
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error, style: nil, tapClosure: tapClosure)
     }
 
     /**
@@ -175,7 +176,7 @@ class SVNotification: UIButton {
      - returns: the notification which has been shown
      */
     class func showCustomAboveNavBar(title: String, subtitle: String? = nil, duration: Double, type: NotificationType, parent: UIViewController, style: Style? = nil, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
-        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, style: style, tapClosure: tapClosure)
+        return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, style: style, tapClosure: tapClosure)
     }
 
     /**
@@ -247,6 +248,8 @@ class SVNotification: UIButton {
         guard notification == nil else {
             notification.stopHideTimerIfRunning()
             notification.currentStyle = style
+            notification.type = type
+            notification.setupBlurView()
             notification.applyCurrentVisualStyles()
             notification.layout = layout
             notification.constrNotificationTopMargin?.constant = notification.yCoordForHiding()
@@ -258,9 +261,11 @@ class SVNotification: UIButton {
         notification = SVNotification(type: .Custom)
         notification.currentStyle = style
         notification.layout = layout
+        notification.type = type
         notification.setTitle("", forState: .Normal)
         notification.frame = CGRectMake(0, topMargin, UIScreen.mainScreen().bounds.width , heightForType(layout))
         setupShadow()
+        notification.setupBlurView()
 
         let isTiny = layout == .Tiny
         let lblTopMargin = layout == .Tiny ? 0.0 : statusBarHeight()
@@ -380,7 +385,7 @@ class SVNotification: UIButton {
     }
 
     private func applyCurrentVisualStyles() {
-        backgroundColor = currentStyle.bgrColor
+        backgroundColor = type == .Default ? UIColor.clearColor() : currentStyle.bgrColor
         lblTitle.textColor = currentStyle.textColorTitle
         lblSubtitle.textColor = currentStyle.textColorSubtitle
         lblTitle.font = currentStyle.fontTitle.fontWithSize(currentStyle.textSizeTitle)
@@ -473,6 +478,33 @@ class SVNotification: UIButton {
         }
 
         constrNotificationHeight.constant = SVNotification.heightForType(layout)
+    }
+
+    private func setupBlurView() {
+        if blurView != nil && blurView.superview != nil {
+            return
+        }
+        guard type == .Default && blurView == nil else {
+            blurView.removeFromSuperview()
+            return
+        }
+
+        let effect = UIBlurEffect(style: .Light)
+        blurView = UIVisualEffectView(effect: effect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.userInteractionEnabled = false
+        let d = ["blur" : blurView]
+        self.addSubview(blurView)
+        self.sendSubviewToBack(blurView)
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[blur]-0-|",
+             options: NSLayoutFormatOptions(rawValue: 0),
+             metrics: nil,
+             views: d)
+        constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[blur]-0-|",
+            options: NSLayoutFormatOptions(rawValue: 0),
+            metrics: nil,
+            views: d))
+        self.addConstraints(constraints)
     }
 }
 
