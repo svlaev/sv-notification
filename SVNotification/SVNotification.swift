@@ -374,7 +374,7 @@ class SVNotification: UIButton {
 
     private func startHideCountdownFor(duration: Double) {
         stopHideTimerIfRunning()
-        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(durationqarget: self, selector: #selector(SVNotification.hideAnimated), userInfo: nil, repeats: false)
+        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(SVNotification.hideAnimated), userInfo: nil, repeats: false)
     }
 
     private func stopHideTimerIfRunning() {
