@@ -73,8 +73,10 @@ class ViewController: UIViewController {
                   duration: SVNotification.Permanent,
                   type: .Default,
                   parent: self,
-                  style: style
-                )
+                  style: style){ n in
+                    n.hide()
+                }
+
             case btmTinyNotification:
                 SVNotification.showTinyNotification(title: "I'm slim :)",
                     duration: SVNotification.Permanent,

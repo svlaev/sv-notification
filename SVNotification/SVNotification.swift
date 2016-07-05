@@ -374,7 +374,7 @@ class SVNotification: UIButton {
 
     private func startHideCountdownFor(duration: Double) {
         stopHideTimerIfRunning()
-        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(SVNotification.hideAnimated), userInfo: nil, repeats: false)
+        SVNotification.hideTimer = NSTimer.scheduledTimerWithTimeInterval(durationqarget: self, selector: #selector(SVNotification.hideAnimated), userInfo: nil, repeats: false)
     }
 
     private func stopHideTimerIfRunning() {
@@ -481,19 +481,15 @@ class SVNotification: UIButton {
     }
 
     private func setupBlurView() {
-        guard type == .Default else {
-            blurView?.removeFromSuperview()
-            return
-        }
-
         if blurView != nil && blurView.superview != nil  {
             return
         }
-        
+
         let effect = UIBlurEffect(style: .Light)
         blurView = UIVisualEffectView(effect: effect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.userInteractionEnabled = false
+        blurView.hidden = true
         let d = ["blur" : blurView]
         self.addSubview(blurView)
         self.sendSubviewToBack(blurView)
@@ -506,6 +502,9 @@ class SVNotification: UIButton {
             metrics: nil,
             views: d))
         self.addConstraints(constraints)
+        self.setNeedsUpdateConstraints()
+        self.layoutIfNeeded()
+        blurView.hidden = false
     }
 }
 
