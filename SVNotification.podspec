@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SVNotification"
-  s.version      = "1.0"
+  s.version      = "1.0.1"
   s.summary      = "iOS App notification lib built with Swift"
   s.description  = 'A small lib designed to make easy showing notifications above the nav bar and below it'
   s.homepage     = "https://github.com/svlaev/sv-notification"
