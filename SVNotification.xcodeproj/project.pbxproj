@@ -13,7 +13,7 @@
 		271DD47F1D216C4C00C46645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271DD47E1D216C4C00C46645 /* Assets.xcassets */; };
 		271DD4821D216C4C00C46645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 271DD4801D216C4C00C46645 /* LaunchScreen.storyboard */; };
 		271DD48D1D216C4C00C46645 /* SVNotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271DD48C1D216C4C00C46645 /* SVNotificationTests.swift */; };
-		27A201B51D2E5FC200009C14 /* SVNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A201B41D2E5FC200009C14 /* SVNotification.swift */; };
+		27A201CC1D2E859D00009C14 /* SVNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A201CB1D2E859D00009C14 /* SVNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 		271DD4881D216C4C00C46645 /* SVNotificationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVNotificationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		271DD48C1D216C4C00C46645 /* SVNotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVNotificationTests.swift; sourceTree = "<group>"; };
 		271DD48E1D216C4C00C46645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27A201B41D2E5FC200009C14 /* SVNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVNotification.swift; sourceTree = "<group>"; };
+		27A201CB1D2E859D00009C14 /* SVNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVNotification.swift; path = Source/SVNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +61,7 @@
 		271DD46B1D216C4C00C46645 = {
 			isa = PBXGroup;
 			children = (
+				27A201CB1D2E859D00009C14 /* SVNotification.swift */,
 				271DD4761D216C4C00C46645 /* SVNotification */,
 				271DD48B1D216C4C00C46645 /* SVNotificationTests */,
 				271DD4751D216C4C00C46645 /* Products */,
@@ -79,7 +80,6 @@
 		271DD4761D216C4C00C46645 /* SVNotification */ = {
 			isa = PBXGroup;
 			children = (
-				27A201B31D2E5FC200009C14 /* Source */,
 				271DD4771D216C4C00C46645 /* AppDelegate.swift */,
 				271DD4791D216C4C00C46645 /* ViewController.swift */,
 				271DD47B1D216C4C00C46645 /* Main.storyboard */,
@@ -97,14 +97,6 @@
 				271DD48E1D216C4C00C46645 /* Info.plist */,
 			);
 			path = SVNotificationTests;
-			sourceTree = "<group>";
-		};
-		27A201B31D2E5FC200009C14 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				27A201B41D2E5FC200009C14 /* SVNotification.swift */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				271DD47A1D216C4C00C46645 /* ViewController.swift in Sources */,
-				27A201B51D2E5FC200009C14 /* SVNotification.swift in Sources */,
+				27A201CC1D2E859D00009C14 /* SVNotification.swift in Sources */,
 				271DD4781D216C4C00C46645 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
