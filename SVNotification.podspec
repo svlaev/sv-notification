@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SVNotification'
-  s.version          = '0.1.0'
+  s.version          = '1.0.3'
   s.summary          = 'Nav bar notifications lib, built with Swift'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Use this lib to show notifications over nav bar
   s.homepage         = 'https://github.com/svlaev/sv-notification.git'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Stanislav Vlaev' => 'stanislav.vlaev@gmail.com' }
-  s.source           = { :git => 'https://github.com/svlaev/sv-notification.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/svlaev/sv-notification.git', :tag => s.version }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
