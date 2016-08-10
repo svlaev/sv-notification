@@ -2,10 +2,8 @@ use_frameworks!
 
 target 'SVNotification_Example' do
   pod 'SVNotification', :path => '../'
+end
 
-  target 'SVNotification_Tests' do
-    inherit! :search_paths
-
-    
-  end
+target 'SVNotification_Tests' do
+  pod 'SVNotification', :path => '../'
 end

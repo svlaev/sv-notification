@@ -10,13 +10,6 @@ Pod::Spec.new do |s|
   s.name             = 'SVNotification'
   s.version          = '1.0.3'
   s.summary          = 'Nav bar notifications lib, built with Swift'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
 Use this lib to show notifications over nav bar
                        DESC
@@ -29,6 +22,6 @@ Use this lib to show notifications over nav bar
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'SVNotification/Classes/**/*'
+  s.source_files = 'SVNotification/Classes/*.*'
 
 end
