@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3BA64732446A4781F75D9613947345BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		3F170DD7A217549249D50623D3F25048 /* SVNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 350F7C8BA1513A866600C0EDFD21E785 /* SVNotification-dummy.m */; };
-		5637758F561251C28BFBDEE601FA5EDC /* SVNotification-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44BDD4065104A45995BEC36A61332B92 /* SVNotification-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		53025A384C127F7C3001184738909E51 /* SVNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A03BFADA42007C0FE40326E747EC2C79 /* SVNotification-dummy.m */; };
+		5637758F561251C28BFBDEE601FA5EDC /* SVNotification-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB1987E8472F77DD8E9F2DB003CAA767 /* SVNotification-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		741A51AEF6CDFA2FB3A7F9EA881A46A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		7CE67E82B0E277DAA0C5B5B6F1BD2BDD /* SVNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE08030BC3EEDC001545BAEDB434853 /* SVNotification.swift */; };
 		8044B1AEC40472FB1B07682D901A4301 /* Pods-SVNotification_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9CC776E99AFF5F042B06A9C7ACA130 /* Pods-SVNotification_Tests-dummy.m */; };
-		B40A15E4F30A4ACCC986C4E5CE18F3D8 /* SVNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36BE38D04B2768B3AC20CD0A3162BFE /* SVNotification.swift */; };
 		CADEC08ED352F8FE6BE2F80DEF157ABE /* Pods-SVNotification_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 22050B2E0E54CD7BB422D5573230673D /* Pods-SVNotification_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D05F50A32F0AA5B679D49C30C94AA22B /* Pods-SVNotification_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 49653034DA23D372CED5BE5AF58A0FE9 /* Pods-SVNotification_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB0535FC970BF908607F939846474C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -39,36 +39,36 @@
 /* Begin PBXFileReference section */
 		0A3F1D484EEC2A96F4B7B0F2D2C6F5A9 /* Pods-SVNotification_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SVNotification_Example-frameworks.sh"; sourceTree = "<group>"; };
 		1C9184420BD155CC0617970AFE598158 /* Pods_SVNotification_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVNotification_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E7F308E69C889B306E2D7833B95DE04 /* SVNotification.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVNotification.xcconfig; sourceTree = "<group>"; };
+		1CE08030BC3EEDC001545BAEDB434853 /* SVNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SVNotification.swift; path = SVNotification/Classes/SVNotification.swift; sourceTree = "<group>"; };
 		1E8086E4F4CEBFA0A413602C95B4E9E7 /* Pods-SVNotification_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SVNotification_Example-dummy.m"; sourceTree = "<group>"; };
 		22050B2E0E54CD7BB422D5573230673D /* Pods-SVNotification_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SVNotification_Example-umbrella.h"; sourceTree = "<group>"; };
-		27E7F3382D6C6568CA9C32EE4B06DE42 /* SVNotification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SVNotification.modulemap; sourceTree = "<group>"; };
 		2AD15B854C13CB70BD251C42912722F7 /* SVNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7B72D9E9EA300B09CE34075316858B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		350F7C8BA1513A866600C0EDFD21E785 /* SVNotification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVNotification-dummy.m"; sourceTree = "<group>"; };
-		44BDD4065104A45995BEC36A61332B92 /* SVNotification-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVNotification-umbrella.h"; sourceTree = "<group>"; };
 		49653034DA23D372CED5BE5AF58A0FE9 /* Pods-SVNotification_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SVNotification_Tests-umbrella.h"; sourceTree = "<group>"; };
 		4B9CC776E99AFF5F042B06A9C7ACA130 /* Pods-SVNotification_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SVNotification_Tests-dummy.m"; sourceTree = "<group>"; };
 		515D2C4C9E3E938A4B89ECDAC06E2E26 /* Pods-SVNotification_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SVNotification_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		53A9BCA91ED659D5A0DEC2313DA24F66 /* Pods-SVNotification_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SVNotification_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		611F65821B26F8A7346C26C7B30CD8AE /* SVNotification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SVNotification.modulemap; sourceTree = "<group>"; };
+		6B6BE46598156F470AC6B88E5CADAE9E /* SVNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVNotification-prefix.pch"; sourceTree = "<group>"; };
 		6FA2985859CDFB284D9C02D3E0A875CA /* Pods-SVNotification_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SVNotification_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		75C49D0AE6B4B492B228E8931BF2461D /* Pods-SVNotification_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SVNotification_Example.release.xcconfig"; sourceTree = "<group>"; };
 		794AAF5B0140D7B79E8D5146809DE74A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		794D4C9D7ABD69019079EB0280B48058 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84CECF7350F6654E7D225F7B23DAB8C1 /* Pods_SVNotification_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVNotification_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95E8AD921DA056668A52609F23274CFC /* Pods-SVNotification_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SVNotification_Tests.modulemap"; sourceTree = "<group>"; };
 		96D55C30CDE4AE8AA94318A98AC8A519 /* Pods-SVNotification_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SVNotification_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A03BFADA42007C0FE40326E747EC2C79 /* SVNotification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVNotification-dummy.m"; sourceTree = "<group>"; };
 		B24E4B04B87C03A0A0CC151A87C5E9A6 /* Pods-SVNotification_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SVNotification_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B395A4A8722929B7CB207BE5792EA708 /* SVNotification.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVNotification.xcconfig; sourceTree = "<group>"; };
 		B54AA7FC7F2CAA6FE4076B536710BCD7 /* Pods-SVNotification_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SVNotification_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		B791DE16C6DC82C6A4598DCD6AB0B4C0 /* Pods-SVNotification_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SVNotification_Example-resources.sh"; sourceTree = "<group>"; };
 		C837076D86941390358A0CA2F621636B /* Pods-SVNotification_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SVNotification_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D1C3604324901DA9E2A3341217EBABB8 /* Pods-SVNotification_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SVNotification_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D2644C110AEF3BF413DB9876DE9A358E /* Pods-SVNotification_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SVNotification_Tests-resources.sh"; sourceTree = "<group>"; };
-		D33894DB64C3D02EABBBBE7A4FA18002 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D39F8E282F346C7CD5B784342AE2C6D0 /* Pods-SVNotification_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SVNotification_Example.modulemap"; sourceTree = "<group>"; };
-		E36BE38D04B2768B3AC20CD0A3162BFE /* SVNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SVNotification.swift; sourceTree = "<group>"; };
-		F1D09FA109F656DB26E3622F080D7AED /* SVNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVNotification-prefix.pch"; sourceTree = "<group>"; };
+		FB1987E8472F77DD8E9F2DB003CAA767 /* SVNotification-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVNotification-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +99,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1099AB755BFCD3E1F03DFB532B231729 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				794D4C9D7ABD69019079EB0280B48058 /* Info.plist */,
+				611F65821B26F8A7346C26C7B30CD8AE /* SVNotification.modulemap */,
+				B395A4A8722929B7CB207BE5792EA708 /* SVNotification.xcconfig */,
+				A03BFADA42007C0FE40326E747EC2C79 /* SVNotification-dummy.m */,
+				6B6BE46598156F470AC6B88E5CADAE9E /* SVNotification-prefix.pch */,
+				FB1987E8472F77DD8E9F2DB003CAA767 /* SVNotification-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SVNotification";
+			sourceTree = "<group>";
+		};
 		3206A28598B0FA7D8A64040421A5C004 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,14 +129,6 @@
 				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		45CC2EAF5E7B8F0A2DDE741AE8F03F22 /* SVNotification */ = {
-			isa = PBXGroup;
-			children = (
-				7E78D777A6F6C70BA1CB66381808B674 /* Classes */,
-			);
-			path = SVNotification;
 			sourceTree = "<group>";
 		};
 		6DAE92CC31E8E4E3C9987E41B11204F8 /* Pods-SVNotification_Example */ = {
@@ -143,33 +149,15 @@
 			path = "Target Support Files/Pods-SVNotification_Example";
 			sourceTree = "<group>";
 		};
-		76D81BF615BA4DAF0A11D24C9BA458FA /* SVNotification */ = {
-			isa = PBXGroup;
-			children = (
-				D046C073D992FD3F572C1A883E8C3C1A /* Support Files */,
-				45CC2EAF5E7B8F0A2DDE741AE8F03F22 /* SVNotification */,
-			);
-			name = SVNotification;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				EB33F046206F0F6B1CBA3C06AE1C3437 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				8DED6CA0FBC5DDCF915ADB55686BE706 /* Pods */,
 				3206A28598B0FA7D8A64040421A5C004 /* Products */,
 				F2F2FD215730F2E26BE2D11C76625FB1 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		7E78D777A6F6C70BA1CB66381808B674 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				E36BE38D04B2768B3AC20CD0A3162BFE /* SVNotification.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		849382AA99B073694B0593D776F9E418 /* Pods-SVNotification_Tests */ = {
@@ -190,6 +178,14 @@
 			path = "Target Support Files/Pods-SVNotification_Tests";
 			sourceTree = "<group>";
 		};
+		8DED6CA0FBC5DDCF915ADB55686BE706 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEA7FEC6DA80338CBAC2497DAC1E7C9B /* SVNotification */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,26 +194,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D046C073D992FD3F572C1A883E8C3C1A /* Support Files */ = {
+		EEA7FEC6DA80338CBAC2497DAC1E7C9B /* SVNotification */ = {
 			isa = PBXGroup;
 			children = (
-				D33894DB64C3D02EABBBBE7A4FA18002 /* Info.plist */,
-				27E7F3382D6C6568CA9C32EE4B06DE42 /* SVNotification.modulemap */,
-				1E7F308E69C889B306E2D7833B95DE04 /* SVNotification.xcconfig */,
-				350F7C8BA1513A866600C0EDFD21E785 /* SVNotification-dummy.m */,
-				F1D09FA109F656DB26E3622F080D7AED /* SVNotification-prefix.pch */,
-				44BDD4065104A45995BEC36A61332B92 /* SVNotification-umbrella.h */,
+				1CE08030BC3EEDC001545BAEDB434853 /* SVNotification.swift */,
+				1099AB755BFCD3E1F03DFB532B231729 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SVNotification";
-			sourceTree = "<group>";
-		};
-		EB33F046206F0F6B1CBA3C06AE1C3437 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				76D81BF615BA4DAF0A11D24C9BA458FA /* SVNotification */,
-			);
-			name = "Development Pods";
+			path = SVNotification;
 			sourceTree = "<group>";
 		};
 		F2F2FD215730F2E26BE2D11C76625FB1 /* Targets Support Files */ = {
@@ -299,7 +282,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16A76BB45E15E3EB1CAE089CEE36B4BC /* Build configuration list for PBXNativeTarget "SVNotification" */;
 			buildPhases = (
-				A1C59549F320CB1E1F83D68078E7745F /* Sources */,
+				6C9D01205367C0B71BCD0F517680EBD4 /* Sources */,
 				C11727DED3516F2F6CB0B60FB812AE17 /* Frameworks */,
 				B8885FE6CCBC3A8EED8FD8D55955C82B /* Headers */,
 			);
@@ -349,12 +332,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1C59549F320CB1E1F83D68078E7745F /* Sources */ = {
+		6C9D01205367C0B71BCD0F517680EBD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F170DD7A217549249D50623D3F25048 /* SVNotification-dummy.m in Sources */,
-				B40A15E4F30A4ACCC986C4E5CE18F3D8 /* SVNotification.swift in Sources */,
+				53025A384C127F7C3001184738909E51 /* SVNotification-dummy.m in Sources */,
+				7CE67E82B0E277DAA0C5B5B6F1BD2BDD /* SVNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +436,7 @@
 		};
 		7952F3B2BFE4FDF23FD496E18527E14D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E7F308E69C889B306E2D7833B95DE04 /* SVNotification.xcconfig */;
+			baseConfigurationReference = B395A4A8722929B7CB207BE5792EA708 /* SVNotification.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -567,7 +550,7 @@
 		};
 		BE6B0EFA01841FB482619464FF653461 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E7F308E69C889B306E2D7833B95DE04 /* SVNotification.xcconfig */;
+			baseConfigurationReference = B395A4A8722929B7CB207BE5792EA708 /* SVNotification.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;

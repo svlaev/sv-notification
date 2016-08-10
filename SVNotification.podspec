@@ -22,6 +22,6 @@ Use this lib to show notifications over nav bar
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'SVNotification/Classes/*.*'
+  s.source_files = 'SVNotification/Classes/**/*.*'
 
 end
