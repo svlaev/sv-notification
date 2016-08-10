@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SVNotification'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'Nav bar notifications lib, built with Swift'
   s.description      = <<-DESC
 Use this lib to show notifications over nav bar
