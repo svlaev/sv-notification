@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B55604FC969F9867940EAD3C2808698 /* SVNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 350F7C8BA1513A866600C0EDFD21E785 /* SVNotification-dummy.m */; };
 		3BA64732446A4781F75D9613947345BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		54F4E03AECEEF63B185617D984C1E552 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31867B4526F8058E598255056A05E6B2 /* ReplaceMe.swift */; };
+		3F170DD7A217549249D50623D3F25048 /* SVNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 350F7C8BA1513A866600C0EDFD21E785 /* SVNotification-dummy.m */; };
 		5637758F561251C28BFBDEE601FA5EDC /* SVNotification-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44BDD4065104A45995BEC36A61332B92 /* SVNotification-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B40A15E4F30A4ACCC986C4E5CE18F3D8 /* SVNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36BE38D04B2768B3AC20CD0A3162BFE /* SVNotification.swift */; };
 		B82C58E0096436BD1F7B9CA9257FF134 /* Pods-SVNotification_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9CC776E99AFF5F042B06A9C7ACA130 /* Pods-SVNotification_Tests-dummy.m */; };
 		CADEC08ED352F8FE6BE2F80DEF157ABE /* Pods-SVNotification_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 22050B2E0E54CD7BB422D5573230673D /* Pods-SVNotification_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3325463B3E8251E5D5AE4E00C259DB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -38,7 +38,6 @@
 		27E7F3382D6C6568CA9C32EE4B06DE42 /* SVNotification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SVNotification.modulemap; sourceTree = "<group>"; };
 		2AD15B854C13CB70BD251C42912722F7 /* SVNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7B72D9E9EA300B09CE34075316858B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		31867B4526F8058E598255056A05E6B2 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		350F7C8BA1513A866600C0EDFD21E785 /* SVNotification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVNotification-dummy.m"; sourceTree = "<group>"; };
 		44BDD4065104A45995BEC36A61332B92 /* SVNotification-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVNotification-umbrella.h"; sourceTree = "<group>"; };
 		49653034DA23D372CED5BE5AF58A0FE9 /* Pods-SVNotification_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SVNotification_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		D2644C110AEF3BF413DB9876DE9A358E /* Pods-SVNotification_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SVNotification_Tests-resources.sh"; sourceTree = "<group>"; };
 		D33894DB64C3D02EABBBBE7A4FA18002 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D39F8E282F346C7CD5B784342AE2C6D0 /* Pods-SVNotification_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SVNotification_Example.modulemap"; sourceTree = "<group>"; };
+		E36BE38D04B2768B3AC20CD0A3162BFE /* SVNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SVNotification.swift; sourceTree = "<group>"; };
 		F1D09FA109F656DB26E3622F080D7AED /* SVNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVNotification-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +113,7 @@
 		45CC2EAF5E7B8F0A2DDE741AE8F03F22 /* SVNotification */ = {
 			isa = PBXGroup;
 			children = (
-				84EBB26ECB7EAFA9E88F4B9955D835B4 /* Classes */,
+				7E78D777A6F6C70BA1CB66381808B674 /* Classes */,
 			);
 			path = SVNotification;
 			sourceTree = "<group>";
@@ -157,6 +157,14 @@
 			);
 			sourceTree = "<group>";
 		};
+		7E78D777A6F6C70BA1CB66381808B674 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E36BE38D04B2768B3AC20CD0A3162BFE /* SVNotification.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		849382AA99B073694B0593D776F9E418 /* Pods-SVNotification_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,14 +181,6 @@
 			);
 			name = "Pods-SVNotification_Tests";
 			path = "Target Support Files/Pods-SVNotification_Tests";
-			sourceTree = "<group>";
-		};
-		84EBB26ECB7EAFA9E88F4B9955D835B4 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				31867B4526F8058E598255056A05E6B2 /* ReplaceMe.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -274,7 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16A76BB45E15E3EB1CAE089CEE36B4BC /* Build configuration list for PBXNativeTarget "SVNotification" */;
 			buildPhases = (
-				6DAC130D42645B32FF550182D705C9C4 /* Sources */,
+				A1C59549F320CB1E1F83D68078E7745F /* Sources */,
 				C11727DED3516F2F6CB0B60FB812AE17 /* Frameworks */,
 				B8885FE6CCBC3A8EED8FD8D55955C82B /* Headers */,
 			);
@@ -349,12 +349,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DAC130D42645B32FF550182D705C9C4 /* Sources */ = {
+		A1C59549F320CB1E1F83D68078E7745F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F4E03AECEEF63B185617D984C1E552 /* ReplaceMe.swift in Sources */,
-				2B55604FC969F9867940EAD3C2808698 /* SVNotification-dummy.m in Sources */,
+				3F170DD7A217549249D50623D3F25048 /* SVNotification-dummy.m in Sources */,
+				B40A15E4F30A4ACCC986C4E5CE18F3D8 /* SVNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

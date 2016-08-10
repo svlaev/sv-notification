@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SVNotification'
   s.version          = '0.1.0'
-  s.summary          = 'UIAlertView replacement built with Swift'
+  s.summary          = 'Nav bar notifications lib, built with Swift'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Use this lib to show notifications over nav bar
                        DESC
 
   s.homepage         = 'https://github.com/svlaev/sv-notification.git'

@@ -1,9 +1,9 @@
 {
   "name": "SVNotification",
   "version": "0.1.0",
-  "summary": "A short description of SVNotification.",
+  "summary": "UIAlertView replacement built with Swift",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/SVNotification",
+  "homepage": "https://github.com/svlaev/sv-notification.git",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Stanislav Vlaev": "stanislav.vlaev@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/SVNotification.git",
+    "git": "https://github.com/svlaev/sv-notification.git",
     "tag": "0.1.0"
   },
   "platforms": {
