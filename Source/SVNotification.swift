@@ -42,15 +42,15 @@ class SVNotification: UIButton {
 
     // MARK: - Static classes
     class Style {
-        var bgrColor: UIColor = UIColor.withDecimal(90, g: 192, b: 222)
+        var bgrColor: UIColor = UIColor.withDecimal(175, g: 15, b: 23)
         var textColorTitle: UIColor = UIColor.whiteColor()
         var textColorSubtitle: UIColor = UIColor.whiteColor()
         var textSizeTitle: CGFloat = 14.0
         var textSizeSubtitle: CGFloat = 13.0
         var fontTitle: UIFont = UIFont(name: "Avenir-Bold", size: 14.0) ?? UIFont.boldSystemFontOfSize(14.0)
         var fontSubtitle: UIFont = UIFont(name: "Avenir-Bold", size: 13.0) ?? UIFont.boldSystemFontOfSize(13.0)
-        var textAlignmentTitle: NSTextAlignment = .Center
-        var textAlignmentSubtitle: NSTextAlignment = .Center
+        var textAlignmentTitle: NSTextAlignment = .Left
+        var textAlignmentSubtitle: NSTextAlignment = .Left
     }
 
     class SuccessStyle: Style {
@@ -222,11 +222,11 @@ class SVNotification: UIButton {
             UIView.animateWithDuration(0.3, animations: {
                 self.setNeedsUpdateConstraints()
                 self.layoutIfNeeded()
-            }, completion: { finished in
-                if finished {
-                    self.removeFromSuperview()
-                    callback?()
-                }
+                }, completion: { finished in
+                    if finished {
+                        self.removeFromSuperview()
+                        callback?()
+                    }
             })
         } else {
             constrNotificationTopMargin.constant = yCoordForHiding()
@@ -278,6 +278,7 @@ class SVNotification: UIButton {
         let lblTitleBottomBorder = notification.lblTitle.frame.origin.y + notification.lblTitle.frame.size.height
         notification.lblSubtitle = UILabel(frame: CGRectMake(0, lblTitleBottomBorder, notification.frame.size.width, notification.frame.size.height - lblTitleBottomBorder))
         notification.lblSubtitle.textAlignment = notification.currentStyle.textAlignmentSubtitle
+        notification.lblSubtitle.numberOfLines = 0
         notification.addSubview(notification.lblSubtitle)
 
         notification.applyCurrentVisualStyles()
@@ -288,6 +289,7 @@ class SVNotification: UIButton {
 
     private class func populateData() {
         notification.lblTitle.text = notification.titleString
+        notification.lblTitle.textAlignment = notification.subtitleString != nil && notification.subtitleString.characters.count > 0 ? .Left : .Center
         notification.lblSubtitle.text = notification.subtitleString
     }
 
@@ -301,10 +303,10 @@ class SVNotification: UIButton {
 
     private class func heightForType(type: LayoutType) -> CGFloat {
         switch type {
-            case .Default:
-                return 44.0 + statusBarHeight()
-            case.Tiny:
-                return 20.0
+        case .Default:
+            return 44.0 + statusBarHeight()
+        case.Tiny:
+            return 20.0
         }
     }
 
@@ -348,14 +350,14 @@ class SVNotification: UIButton {
         var s: Style! = style
         if s == nil {
             switch type {
-                case .Success:
-                    s = SuccessStyle()
-                case .Warning:
-                    s = WarningStyle()
-                case .Error:
-                    s = ErrorStyle()
-                default:
-                    s = Style()
+            case .Success:
+                s = SuccessStyle()
+            case .Warning:
+                s = WarningStyle()
+            case .Error:
+                s = ErrorStyle()
+            default:
+                s = Style()
             }
         }
         notification = SVNotification.initWithTitle(title, subtitle: subTitle, duration: duration, parent: parent, layout: layout, type: type, style: s, closure: tapClosure)
@@ -403,24 +405,24 @@ class SVNotification: UIButton {
                 constrLblSubtitleHeight.constant = 0.0
             }
             var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[notification]-0-|",
-                 options: NSLayoutFormatOptions(rawValue: 0),
-                 metrics: nil,
-                 views: dict)
+                                                                             options: NSLayoutFormatOptions(rawValue: 0),
+                                                                             metrics: nil,
+                                                                             views: dict)
             constrNotificationTopMargin = NSLayoutConstraint(item: self,
-                 attribute: .Top,
-                 relatedBy: .Equal,
-                 toItem: parentVC.view,
-                 attribute: .TopMargin,
-                 multiplier: 1.0,
-                 constant: topMargin)
+                                                             attribute: .Top,
+                                                             relatedBy: .Equal,
+                                                             toItem: parentVC.view,
+                                                             attribute: .TopMargin,
+                                                             multiplier: 1.0,
+                                                             constant: topMargin)
             constraints.append(constrNotificationTopMargin)
             constrNotificationHeight = NSLayoutConstraint(item: self,
-                  attribute: .Height,
-                  relatedBy: .Equal,
-                  toItem: nil,
-                  attribute: .NotAnAttribute,
-                  multiplier: 1.0,
-                  constant: height)
+                                                          attribute: .Height,
+                                                          relatedBy: .Equal,
+                                                          toItem: nil,
+                                                          attribute: .NotAnAttribute,
+                                                          multiplier: 1.0,
+                                                          constant: height)
             constraints.append(constrNotificationHeight)
             parentVC.view.addConstraints(constraints)
         }
@@ -433,20 +435,20 @@ class SVNotification: UIButton {
             let dict = ["lbl" : lblSubtitle]
             lblSubtitle.translatesAutoresizingMaskIntoConstraints = false
             var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[lbl]-0-|",
-                 options: NSLayoutFormatOptions(rawValue: 0),
-                 metrics: nil,
-                 views: dict)
-            constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[lbl]-0-|",
+                                                                             options: NSLayoutFormatOptions(rawValue: 0),
+                                                                             metrics: nil,
+                                                                             views: dict)
+            constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[lbl]-10-|",
                 options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: nil,
                 views: dict))
             constrLblSubtitleHeight = NSLayoutConstraint(item: lblSubtitle,
-                 attribute: .Height,
-                 relatedBy: .Equal,
-                 toItem: nil,
-                 attribute: .NotAnAttribute,
-                 multiplier: 1.0,
-                 constant: subTitleHeight)
+                                                         attribute: .Height,
+                                                         relatedBy: .Equal,
+                                                         toItem: nil,
+                                                         attribute: .NotAnAttribute,
+                                                         multiplier: 1.0,
+                                                         constant: subTitleHeight)
             constraints.append(constrLblSubtitleHeight)
             self.addConstraints(constraints)
         } else {
@@ -457,18 +459,18 @@ class SVNotification: UIButton {
         if constrLblTitleTopMargin == nil {
             let dict = ["lblTitle" : lblTitle, "lblSubtitle" : lblSubtitle]
             var arr = NSLayoutConstraint.constraintsWithVisualFormat("V:[lblTitle]-0-[lblSubtitle]",
-                 options: NSLayoutFormatOptions(rawValue:0),
-                 metrics: nil,
-                 views: dict)
+                                                                     options: NSLayoutFormatOptions(rawValue:0),
+                                                                     metrics: nil,
+                                                                     views: dict)
             constrLblTitleTopMargin = NSLayoutConstraint(item: lblTitle,
-                 attribute: .Top,
-                 relatedBy: .Equal,
-                 toItem: self,
-                 attribute: .Top,
-                 multiplier: 1.0,
-                 constant: lblTopMargin)
+                                                         attribute: .Top,
+                                                         relatedBy: .Equal,
+                                                         toItem: self,
+                                                         attribute: .Top,
+                                                         multiplier: 1.0,
+                                                         constant: lblTopMargin)
             arr.append(constrLblTitleTopMargin)
-            arr.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[lblTitle]-0-|",
+            arr.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[lblTitle]-10-|",
                 options: NSLayoutFormatOptions(rawValue:0),
                 metrics: nil,
                 views: dict))
@@ -476,15 +478,15 @@ class SVNotification: UIButton {
         } else {
             constrLblTitleTopMargin.constant = lblTopMargin
         }
-
+        
         constrNotificationHeight.constant = SVNotification.heightForType(layout)
     }
-
+    
     private func setupBlurView() {
         if blurView != nil && blurView.superview != nil  {
             return
         }
-
+        
         let effect = UIBlurEffect(style: .Light)
         blurView = UIVisualEffectView(effect: effect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -494,9 +496,9 @@ class SVNotification: UIButton {
         self.addSubview(blurView)
         self.sendSubviewToBack(blurView)
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[blur]-0-|",
-             options: NSLayoutFormatOptions(rawValue: 0),
-             metrics: nil,
-             views: d)
+                                                                         options: NSLayoutFormatOptions(rawValue: 0),
+                                                                         metrics: nil,
+                                                                         views: d)
         constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[blur]-0-|",
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
@@ -511,12 +513,12 @@ class SVNotification: UIButton {
 extension UIColor {
     /**
      Make UIColor from decimal values
-
+     
      - parameter r:     red component. Values: [0, 255]
      - parameter g:     green component. Values: [0, 255]
      - parameter b:     blue component. Values: [0, 255]
      - parameter alpha: alpha component. Values: [0.0, 1.0]
-
+     
      - returns: UIColor object from the specified values
      */
     static func withDecimal(r: Int, g: Int, b: Int, alpha: CGFloat = 1.0) -> UIColor {
