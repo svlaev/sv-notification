@@ -1,6 +1,0 @@
-framework module SVNotification {
-  umbrella header "SVNotification-umbrella.h"
-
-  export *
-  module * { export * }
-}

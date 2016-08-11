@@ -1,9 +1,0 @@
-use_frameworks!
-
-target 'SVNotification_Example' do
-  pod 'SVNotification', :git => 'https://github.com/svlaev/sv-notification.git'
-end
-
-target 'SVNotification_Tests' do
-  pod 'SVNotification', :git => 'https://github.com/svlaev/sv-notification.git'
-end
