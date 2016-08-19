@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source_files = 'SVNotification/Classes/**/*'
+  s.source_files = 'SVNotification/Classes/**/*.swift'
 
 end

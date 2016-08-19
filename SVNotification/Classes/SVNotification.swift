@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SVNotification: UIButton {
-    enum LayoutType: Int {
+public class SVNotification: UIButton {
+    public enum LayoutType: Int {
         /**
          Default type. Shows notification overlaying the nav bar
          */
@@ -21,7 +21,7 @@ class SVNotification: UIButton {
         case Tiny
     }
 
-    enum NotificationType {
+    public enum NotificationType {
         /*
          Displays default notification with blue background
          */
@@ -41,33 +41,37 @@ class SVNotification: UIButton {
     }
 
     // MARK: - Static classes
-    class Style {
-        var bgrColor: UIColor = UIColor.withDecimal(175, g: 15, b: 23)
-        var textColorTitle: UIColor = UIColor.whiteColor()
-        var textColorSubtitle: UIColor = UIColor.whiteColor()
-        var textSizeTitle: CGFloat = 14.0
-        var textSizeSubtitle: CGFloat = 13.0
-        var fontTitle: UIFont = UIFont(name: "Avenir-Bold", size: 14.0) ?? UIFont.boldSystemFontOfSize(14.0)
-        var fontSubtitle: UIFont = UIFont(name: "Avenir-Bold", size: 13.0) ?? UIFont.boldSystemFontOfSize(13.0)
-        var textAlignmentTitle: NSTextAlignment = .Left
-        var textAlignmentSubtitle: NSTextAlignment = .Left
+    public class Style {
+        public var bgrColor: UIColor = UIColor.withDecimal(175, g: 15, b: 23)
+        public var textColorTitle: UIColor = UIColor.whiteColor()
+        public var textColorSubtitle: UIColor = UIColor.whiteColor()
+        public var textSizeTitle: CGFloat = 14.0
+        public var textSizeSubtitle: CGFloat = 13.0
+        public var fontTitle: UIFont = UIFont(name: "Avenir-Bold", size: 14.0) ?? UIFont.boldSystemFontOfSize(14.0)
+        public var fontSubtitle: UIFont = UIFont(name: "Avenir-Bold", size: 13.0) ?? UIFont.boldSystemFontOfSize(13.0)
+        public var textAlignmentTitle: NSTextAlignment = .Left
+        public var textAlignmentSubtitle: NSTextAlignment = .Left
+
+        public init(){
+            
+        }
     }
 
-    class SuccessStyle: Style {
+    public class SuccessStyle: Style {
         override init() {
             super.init()
             bgrColor = UIColor.withDecimal(92, g: 184, b: 92)
         }
     }
 
-    class WarningStyle: Style {
+    public class WarningStyle: Style {
         override init() {
             super.init()
             bgrColor = UIColor.withDecimal(240, g: 173, b: 78)
         }
     }
 
-    class ErrorStyle: Style {
+    public class ErrorStyle: Style {
         override init() {
             super.init()
             bgrColor = UIColor.withDecimal(213, g: 83, b: 79)
@@ -75,7 +79,7 @@ class SVNotification: UIButton {
     }
 
     // MARK: - Public properties
-    var tapClosure: (SVNotification -> Void)? = nil
+    public var tapClosure: (SVNotification -> Void)? = nil
 
     // MARK: - Private properties
     private var layout: LayoutType = .Default
@@ -99,7 +103,7 @@ class SVNotification: UIButton {
     private static var hideTimer: NSTimer! = nil
 
     // MARK: - Static properties
-    static var Permanent: Double = 0.0
+    public static var Permanent: Double = 0.0
 
     // MARK: - Public Static methods
     /**
@@ -113,7 +117,7 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showDefaultAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+    public class func showDefaultAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
         return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Default, style: nil, tapClosure: tapClosure)
     }
 
@@ -128,7 +132,7 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showSuccessAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+    public class func showSuccessAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
         return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, style: nil, tapClosure: tapClosure)
     }
 
@@ -143,7 +147,7 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showWarningAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+    public class func showWarningAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
         return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Warning, style: nil, tapClosure: tapClosure)
     }
 
@@ -158,7 +162,7 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showErrorAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+    public class func showErrorAboveNavBar(title: String, subtitle: String? = nil, duration: Double, parent: UIViewController, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
         return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Error, style: nil, tapClosure: tapClosure)
     }
 
@@ -175,7 +179,7 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showCustomAboveNavBar(title: String, subtitle: String? = nil, duration: Double, type: NotificationType, parent: UIViewController, style: Style? = nil, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
+    public class func showCustomAboveNavBar(title: String, subtitle: String? = nil, duration: Double, type: NotificationType, parent: UIViewController, style: Style? = nil, tapClosure: (SVNotification -> Void)? = nil) -> SVNotification {
         return showNotification(title, subTitle: subtitle ?? "", duration: duration, parent: parent, layout: .Default, type: .Success, style: style, tapClosure: tapClosure)
     }
 
@@ -189,12 +193,12 @@ class SVNotification: UIButton {
 
      - returns: the notification which has been shown
      */
-    class func showTinyNotification(title t: String, duration: Double, parent: UIViewController, type: NotificationType = .Default, style: Style? = nil) -> SVNotification {
+    public class func showTinyNotification(title t: String, duration: Double, parent: UIViewController, type: NotificationType = .Default, style: Style? = nil) -> SVNotification {
         return showNotification(t, subTitle: "", duration: duration, parent: parent, layout: .Tiny, type: type, style: style, tapClosure: nil)
     }
 
     // MARK: - Public methods
-    func show() {
+    public func show() {
         guard NSThread.isMainThread() else {
             dispatch_async(dispatch_get_main_queue()) {
                 self.show()
@@ -209,7 +213,7 @@ class SVNotification: UIButton {
         }
     }
 
-    func hide(animated: Bool = true, callback: (Void->Void)? = nil) {
+    public func hide(animated: Bool = true, callback: (Void->Void)? = nil) {
         guard NSThread.isMainThread() else {
             dispatch_async(dispatch_get_main_queue()) {
                 self.hide(animated, callback: callback)
@@ -235,7 +239,7 @@ class SVNotification: UIButton {
         }
     }
 
-    func hideAnimated() {
+    public func hideAnimated() {
         hide(true)
     }
 
