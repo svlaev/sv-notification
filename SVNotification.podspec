@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SVNotification'
-  s.version          = '1.0.6'
+  s.version          = '1.0.7'
   s.summary          = 'Nav bar notifications lib, built with Swift'
 
   s.description      = <<-DESC
