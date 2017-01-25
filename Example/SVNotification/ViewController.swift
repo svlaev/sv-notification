@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func actionShowNotification(sender: UIButton) {
+    @IBAction func actionShowNotification(_ sender: UIButton) {
         switch sender {
         case btnNavBarDefault:
             SVNotification.showDefaultAboveNavBar("Default Title",
@@ -66,13 +66,13 @@ class ViewController: UIViewController {
             }
         case btnNavBarCustom:
             let style = SVNotification.Style()
-            style.bgrColor = UIColor.purpleColor()
+            style.bgrColor = UIColor.purple
             style.fontTitle = UIFont(name: "Arial", size: 16.0)!
             style.fontSubtitle = UIFont(name: "AmericanTypewriter-Bold", size: 14.0)!
             SVNotification.showCustomAboveNavBar("Custom",
                                                  subtitle: "Custom Subtitle",
                                                  duration: SVNotification.Permanent,
-                                                 type: .Default,
+                                                 type: .default,
                                                  parent: self,
                                                  style: style){ n in
                                                     n.hide()
@@ -88,13 +88,13 @@ class ViewController: UIViewController {
             SVNotification.showTinyNotification(title: "Reconnecting...",
                                                 duration: SVNotification.Permanent,
                                                 parent: self,
-                                                type: .Warning
+                                                type: .warning
             )
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
                 SVNotification.showTinyNotification(title: "Connected!!",
                                                     duration: 1.0,
                                                     parent: self,
-                                                    type: .Success
+                                                    type: .success
                 )
             }
             
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         title = "Very long title"

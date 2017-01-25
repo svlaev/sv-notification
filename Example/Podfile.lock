@@ -1,5 +1,5 @@
 PODS:
-  - SVNotification (1.0.6)
+  - SVNotification (1.0.7)
 
 DEPENDENCIES:
   - SVNotification (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SVNotification: 0b5e4b11a1d012e115304f17bee6d3d7a5a534f9
+  SVNotification: 71ac2931d10bb159eebd2a946c70eac449f2eafb
 
 PODFILE CHECKSUM: 2d79d57b3b49e78aad5af5e305c4ec1ca99621f5
 
-COCOAPODS: 1.1.0.beta.1
+COCOAPODS: 1.2.0.beta.3
