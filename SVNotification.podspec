@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SVNotification'
-  s.version          = '1.0.7'
+  s.version          = '1.1'
   s.summary          = 'Nav bar notifications lib, built with Swift'
 
   s.description      = <<-DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/svlaev/sv-notification.git", :tag => s.version.to_s }
   s.social_media_url = "https://twitter.com/svlaev"
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "8.3"
 
   s.source_files = 'SVNotification/Classes/**/*.swift'
 
