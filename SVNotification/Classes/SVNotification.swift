@@ -442,7 +442,7 @@ open class SVNotification: UIButton {
         let hasSubtitle = (subtitleString?.characters.count ?? 0) > 0
         let subTitleHeight = isTiny ? 0 : (hasSubtitle ? (constrNotificationHeight.constant - lblTopMargin) / 2.0 : 0)
         if constrLblSubtitleHeight == nil {
-            let dict = ["lbl" : lblSubtitle]
+            let dict: [String : Any] = ["lbl" : lblSubtitle]
             lblSubtitle.translatesAutoresizingMaskIntoConstraints = false
             var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[lbl]-0-|",
                                                                              options: NSLayoutFormatOptions(rawValue: 0),
@@ -467,7 +467,7 @@ open class SVNotification: UIButton {
 
         lblTitle.translatesAutoresizingMaskIntoConstraints = false
         if constrLblTitleTopMargin == nil {
-            let dict = ["lblTitle" : lblTitle, "lblSubtitle" : lblSubtitle]
+            let dict: [String : Any] = ["lblTitle" : lblTitle, "lblSubtitle" : lblSubtitle]
             var arr = NSLayoutConstraint.constraints(withVisualFormat: "V:[lblTitle]-0-[lblSubtitle]",
                                                                      options: NSLayoutFormatOptions(rawValue:0),
                                                                      metrics: nil,
@@ -502,7 +502,7 @@ open class SVNotification: UIButton {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.isUserInteractionEnabled = false
         blurView.isHidden = true
-        let d = ["blur" : blurView]
+        let d: [String: Any] = ["blur" : blurView]
         self.addSubview(blurView)
         self.sendSubview(toBack: blurView)
         var constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[blur]-0-|",
