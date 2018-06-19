@@ -219,7 +219,7 @@ open class SVNotification: UIButton {
         }) 
     }
 
-    open func hide(_ animated: Bool = true, callback: ((Void)->Void)? = nil) {
+    open func hide(_ animated: Bool = true, callback: (()->Void)? = nil) {
         guard Thread.isMainThread else {
             DispatchQueue.main.async {
                 self.hide(animated, callback: callback)
@@ -245,11 +245,11 @@ open class SVNotification: UIButton {
         }
     }
 
-    open func hideAnimated() {
+    @objc open func hideAnimated() {
         hide(true)
     }
 
-    func viewTapped() {
+    @objc func viewTapped() {
         tapClosure?(self)
     }
 
@@ -299,7 +299,7 @@ open class SVNotification: UIButton {
 
     fileprivate class func populateData() {
         notification.lblTitle.text = notification.titleString
-        notification.lblTitle.textAlignment = notification.subtitleString != nil && notification.subtitleString.characters.count > 0 ? .left : .center
+        notification.lblTitle.textAlignment = notification.subtitleString != nil && notification.subtitleString.count > 0 ? .left : .center
         notification.lblSubtitle.text = notification.subtitleString
     }
 
@@ -439,7 +439,7 @@ open class SVNotification: UIButton {
 
         let isTiny = layout == .tiny
         let lblTopMargin = isTiny ? 0.0 : SVNotification.statusBarHeight()
-        let hasSubtitle = (subtitleString?.characters.count ?? 0) > 0
+        let hasSubtitle = (subtitleString?.count ?? 0) > 0
         let subTitleHeight = isTiny ? 0 : (hasSubtitle ? (constrNotificationHeight.constant - lblTopMargin) / 2.0 : 0)
         if constrLblSubtitleHeight == nil {
             let dict: [String : Any] = ["lbl" : lblSubtitle]
